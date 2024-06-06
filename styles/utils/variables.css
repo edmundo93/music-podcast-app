@@ -4,6 +4,11 @@
     --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
+
+    --main-padding: 6rem;
+    --main-minwidth: 50rem;
+    --main-minheight: 100vh;
+    --main-gap: 1rem;
   
     --foreground-rgb: 0, 0, 0;
 
@@ -17,3 +22,33 @@
 
     --border: 2px solid var(--grey-color);
   }
+
+/* Mobile */
+@media (max-width: 700px) {
+  :root {
+    --main-padding: 2rem;
+    --main-minwidth: 20rem; /*Usually mobile width is between 320 and 720 so 320 / 16 = 20rem*/
+    --main-minheight: 100vh;
+    --main-gap: 0.5rem;
+  }
+}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  :root {
+    --main-padding: 4rem;
+    --main-minwidth: 37.5rem; /*600 / 16 = 37.5 */
+    --main-minheight: 100vh;
+    --main-gap: 0.75rem;
+  }
+}
+
+/*Big desktop*/
+@media (min-width: 1121px) {
+  :root {
+    --main-padding: 6rem;
+    --main-minwidth: 50rem; /*800 / 16 = 50*/
+    --main-minheight: 100vh;
+    --main-gap: 1rem;
+  }
+}
