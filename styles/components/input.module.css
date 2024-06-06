@@ -1,0 +1,7 @@
+.input {
+    position: relative;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: var(--padding-container);
+    border: var(--border);
+}
