@@ -1,0 +1,16 @@
+.row {
+    display: flex;
+    flex-direction: row;
+    gap: var(--row-gap);
+    flex-wrap: wrap;
+}
+
+.row-aligned-end {
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.all-width {
+    position: relative;
+    width: 100%;
+}
