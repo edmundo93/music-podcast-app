@@ -2,9 +2,12 @@ name: Lint
 
 on:
   push:
-    branches: [main]
+    branches:
+      - '**' # Execute on all branches every time there is a push
   pull_request:
-    branches: [main]
+    branches:
+      - '**' # Execute on all branche every time there is a pull request
+  workflow_dispatch: # Allow manual execution
 
 jobs:
   eslint:
