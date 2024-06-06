@@ -1,6 +1,6 @@
-import React from "react";
-import Input from "@app-components/ui/input";
-import styles from "@app-components/search/search.module.css";
+import React from 'react';
+import Input from '@app-components/ui/input';
+import styles from '@app-components/search/search.module.css';
 
 interface IProps {
   value: string;
@@ -14,7 +14,7 @@ const Search = (props: IProps) => {
   };
 
   return (
-    <div className={styles.container} data-testid="search" >
+    <div className={styles.container} data-testid="search">
       <Input
         value={props.value}
         onChange={onChange}
