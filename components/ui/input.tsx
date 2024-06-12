@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import styles from '@app-styles/components/input.module.css';
+import styles from '@app-styles/components/input.module.css'
 
 const Input = (
   props: React.DetailedHTMLProps<
@@ -15,7 +15,7 @@ const Input = (
       className={styles.input}
       data-testid="input"
     />
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
