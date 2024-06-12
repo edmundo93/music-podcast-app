@@ -2,10 +2,21 @@ import PodcastList from '@/components/podcast-list/podcast-list'
 import { render, screen } from '@testing-library/react'
 import { mockPodcasts } from '../__mocks__/podcastMocks'
 import styles from '@app-components/podcast-list/podcast-list.module.css'
+import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
 
 describe('PodcastList', () => {
   test('renders a list of podcasts correctly', () => {
-    render(<PodcastList podcasts={mockPodcasts} />)
+    render(
+      <PodcastsContext.Provider
+        value={{
+          filteredPodcasts: mockPodcasts,
+          podcasts: mockPodcasts,
+          dispatch: () => {},
+        }}
+      >
+        <PodcastList />
+      </PodcastsContext.Provider>
+    )
 
     const podcastList = screen.getByTestId('podcast-list')
     expect(podcastList).toBeInTheDocument()
@@ -13,7 +24,17 @@ describe('PodcastList', () => {
   })
 
   test('applies the correct styles to the container', () => {
-    render(<PodcastList podcasts={mockPodcasts} />)
+    render(
+      <PodcastsContext.Provider
+        value={{
+          filteredPodcasts: mockPodcasts,
+          podcasts: mockPodcasts,
+          dispatch: () => {},
+        }}
+      >
+        <PodcastList />
+      </PodcastsContext.Provider>
+    )
 
     const podcastList = screen.getByTestId('podcast-list')
     expect(podcastList).toHaveClass('row')
@@ -21,7 +42,17 @@ describe('PodcastList', () => {
   })
 
   test('renders empty state correctly', () => {
-    render(<PodcastList podcasts={[]} />)
+    render(
+      <PodcastsContext.Provider
+        value={{
+          filteredPodcasts: [],
+          podcasts: [],
+          dispatch: () => {},
+        }}
+      >
+        <PodcastList />
+      </PodcastsContext.Provider>
+    )
 
     const podcastList = screen.getByTestId('podcast-list')
     expect(podcastList).toBeInTheDocument()
