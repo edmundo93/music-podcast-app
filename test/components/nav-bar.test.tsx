@@ -1,13 +1,13 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Header from '@app-components/header/header';
+import NavBar from '@/components/layout/nav-bar/nav-bar';
 
-describe('Header', () => {
+describe('NavBar', () => {
   it('should render header', () => {
-    render(<Header />);
+    render(<NavBar />);
 
     const text = screen.getByText('Podcaster');
-    const header = screen.getByTestId('header');
+    const header = screen.getByTestId('navbar');
 
     expect(text).toBeInTheDocument();
     expect(header).toBeInTheDocument();

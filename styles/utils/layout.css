@@ -1,8 +1,10 @@
 .row {
     display: flex;
     flex-direction: row;
-    gap: var(--row-gap);
+    gap: var(--column-gap) var(--row-gap);
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-evenly;
 }
 
 .row-aligned-end {

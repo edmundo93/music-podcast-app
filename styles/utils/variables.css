@@ -5,7 +5,7 @@
       "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
       "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
 
-    --main-padding: 6rem;
+    --main-padding: 2rem;
     --main-minwidth: 50rem;
     --main-minheight: 100vh;
     --main-gap: 1rem;
@@ -15,18 +15,23 @@
     --padding-container: 0.5rem;
 
     --primary-bg-color: #1E90FF;
-
     --grey-color: #DCDCDC;
+    --white-color: #fff;
 
     --row-gap: 0.5rem;
+    --column-gap: 1rem;
 
     --border: 2px solid var(--grey-color);
+
+    --card-box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.2);
+
+    --secondary-text-color: #DCDCDC;
   }
 
 /* Mobile */
 @media (max-width: 700px) {
   :root {
-    --main-padding: 2rem;
+    --main-padding: 0.5rem;
     --main-minwidth: 20rem; /*Usually mobile width is between 320 and 720 so 320 / 16 = 20rem*/
     --main-minheight: 100vh;
     --main-gap: 0.5rem;
@@ -36,7 +41,7 @@
 /* Tablet and Smaller Desktop */
 @media (min-width: 701px) and (max-width: 1120px) {
   :root {
-    --main-padding: 4rem;
+    --main-padding: 1rem;
     --main-minwidth: 37.5rem; /*600 / 16 = 37.5 */
     --main-minheight: 100vh;
     --main-gap: 0.75rem;
@@ -46,7 +51,7 @@
 /*Big desktop*/
 @media (min-width: 1121px) {
   :root {
-    --main-padding: 6rem;
+    --main-padding: 2rem;
     --main-minwidth: 50rem; /*800 / 16 = 50*/
     --main-minheight: 100vh;
     --main-gap: 1rem;
