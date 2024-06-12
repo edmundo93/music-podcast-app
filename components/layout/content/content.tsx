@@ -1,14 +1,19 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext } from 'react'
 import styles from '@app-components/layout/content/content.module.css'
 import SearchSection from '../../search-section'
-import { PodcastItemI } from '@/api/data/Podcast'
 import { getAllPodcast } from '@/api/services/podcastService'
 import PodcastList from '@/components/podcast-list/podcast-list'
+import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
+import { PodcastContextI } from '@/contexts/podcast-context/types'
+import {
+  updateFilteredPodcasts,
+  updatePodcasts,
+} from '@/contexts/podcast-context/podcasts.actions'
 
 const Content = () => {
-  const [podcasts, setPodcasts] = useState<PodcastItemI[]>([])
+  const { dispatch } = useContext<PodcastContextI>(PodcastsContext)
 
   useEffect(() => {
     void getData()
@@ -16,13 +21,14 @@ const Content = () => {
 
   const getData = async () => {
     const allPodcasts = await getAllPodcast()
-    setPodcasts(allPodcasts)
+    updatePodcasts(dispatch, allPodcasts)
+    updateFilteredPodcasts(dispatch, allPodcasts)
   }
 
   return (
     <div className={styles.content} data-testid="content">
       <SearchSection />
-      <PodcastList podcasts={podcasts} />
+      <PodcastList />
     </div>
   )
 }
