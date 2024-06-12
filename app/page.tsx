@@ -1,12 +1,14 @@
-import styles from './page.module.css';
-import Header from '@/components/header/header';
-import Content from '@app-components/content/content';
+import styles from './page.module.css'
+import NavBar from '@/components/layout/nav-bar/nav-bar'
+import Content from '@/components/layout/content/content'
 
-export default function Home() {
+const Home = () => {
   return (
     <main className={styles.main}>
-      <Header />
+      <NavBar />
       <Content />
     </main>
-  );
+  )
 }
+
+export default Home

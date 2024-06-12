@@ -11,8 +11,10 @@
     "prettier/prettier": [
       "error",
     {
-      "endOfLine": "auto"
+      "endOfLine": "auto",
+      "semi": false
     }
-    ]
+    ],
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

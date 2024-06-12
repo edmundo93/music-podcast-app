@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from '@app-styles/components/tag.module.css';
-import '@app-styles/utils/mixins.css';
+import React from 'react'
+import styles from '@app-styles/components/tag.module.css'
+import '@app-styles/utils/mixins.css'
 
 interface IProps {
-  value: string | number;
-  mode?: 'primary';
+  value: string | number
+  mode?: 'primary'
 }
 
 const Tag = (props: IProps) => {
@@ -12,7 +12,7 @@ const Tag = (props: IProps) => {
     <div className={`${styles.tag} ${props.mode ?? ''}`} data-testid="tag">
       {props.value}
     </div>
-  );
-};
+  )
+}
 
-export default Tag;
+export default Tag

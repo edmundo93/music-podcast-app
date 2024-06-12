@@ -7,7 +7,6 @@
   padding: var(--main-padding);
   min-height: var(--main-minheight);
   min-width: var(--main-minwidth);
-  overflow: auto;
 }
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {
