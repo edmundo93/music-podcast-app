@@ -12,6 +12,7 @@ export const PodcastsContext = createContext<PodcastContextI>({
   dispatch: () => {},
   podcasts: [],
   filteredPodcasts: [],
+  isLoading: false,
 })
 
 export const PodcastsContextProvider = (props: IProps) => {

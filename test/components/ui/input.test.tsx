@@ -1,44 +1,44 @@
-import Input from "@app-components/ui/input"
-import { render, screen } from "@testing-library/react"
+import Input from '@app-components/ui/input'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 describe('Input', () => {
-    it('Should render Input component', () => {
-        render(<Input />)
+  it('Should render Input component', () => {
+    render(<Input />)
 
-        const input = screen.getByTestId('input')
-        
-        expect(input).toBeInTheDocument()
-    })
+    const input = screen.getByTestId('input')
 
-    it('Should render correctly the input type', () => {
-        render(<Input type="number" />)
+    expect(input).toBeInTheDocument()
+  })
 
-        const input = screen.getByTestId('input')
+  it('Should render correctly the input type', () => {
+    render(<Input type="number" />)
 
-        expect(input).toHaveAttribute('type', 'number')
-    })
+    const input = screen.getByTestId('input')
 
-    it('Should show a place holder if it is passed', () => {
-        const placeholder = 'A placeholder...'
+    expect(input).toHaveAttribute('type', 'number')
+  })
 
-        render(<Input placeholder={placeholder} />)
+  it('Should show a place holder if it is passed', () => {
+    const placeholder = 'A placeholder...'
 
-        const input = screen.getByTestId('input')
-        const inputPlaceHolder = screen.getByPlaceholderText(placeholder)
+    render(<Input placeholder={placeholder} />)
 
-        expect(input).toBeInTheDocument()
-        expect(inputPlaceHolder).toBeInTheDocument()
-    })
+    const input = screen.getByTestId('input')
+    const inputPlaceHolder = screen.getByPlaceholderText(placeholder)
 
-    it('Should changes value correctly', async () => {
-        const value = 'New value'
+    expect(input).toBeInTheDocument()
+    expect(inputPlaceHolder).toBeInTheDocument()
+  })
 
-        render(<Input />)
+  it('Should changes value correctly', async () => {
+    const value = 'New value'
 
-        const input = screen.getByTestId('input')
-        await userEvent.type(input, value)
+    render(<Input />)
 
-        expect(input).toHaveValue(value)
-    })
+    const input = screen.getByTestId('input')
+    await userEvent.type(input, value)
+
+    expect(input).toHaveValue(value)
+  })
 })

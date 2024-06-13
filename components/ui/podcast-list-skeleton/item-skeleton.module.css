@@ -1,0 +1,51 @@
+.container {
+    position: relative;
+    width: 12rem;
+    height: 6rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin: 0.25rem;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.image {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    top: -2rem;
+    box-shadow: var(--card-box-shadow);
+    background-color: var(--grey-color);
+}
+
+.text {
+    position: relative;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--grey-color);
+}
+
+.title {
+    width: 90%;
+    margin-top: 2rem;
+}
+
+.subtitle {
+    width: 70%;
+}

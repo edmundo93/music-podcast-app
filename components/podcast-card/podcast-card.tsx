@@ -18,7 +18,7 @@ const PodcastCard = (props: IProps) => {
         className={styles.image}
       />
       <strong>{props.podcast.title.label}</strong>
-      <p>{props.podcast['im:artist'].label}</p>
+      <p>{`Author: ${props.podcast['im:artist'].label}`}</p>
     </div>
   )
 }

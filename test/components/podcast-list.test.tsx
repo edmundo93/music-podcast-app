@@ -11,6 +11,7 @@ describe('PodcastList', () => {
         value={{
           filteredPodcasts: mockPodcasts,
           podcasts: mockPodcasts,
+          isLoading: false,
           dispatch: () => {},
         }}
       >
@@ -29,6 +30,7 @@ describe('PodcastList', () => {
         value={{
           filteredPodcasts: mockPodcasts,
           podcasts: mockPodcasts,
+          isLoading: false,
           dispatch: () => {},
         }}
       >
@@ -47,6 +49,7 @@ describe('PodcastList', () => {
         value={{
           filteredPodcasts: [],
           podcasts: [],
+          isLoading: false,
           dispatch: () => {},
         }}
       >

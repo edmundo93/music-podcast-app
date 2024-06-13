@@ -4,6 +4,7 @@ import Content from '@/components/layout/content/content'
 import { render, screen } from '@testing-library/react'
 import { mockPodcasts } from '../__mocks__/podcastMocks'
 import { beforeEach } from 'node:test'
+import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
 
 describe('Content', () => {
   beforeEach(() => {
@@ -17,7 +18,18 @@ describe('Content', () => {
   })
 
   test('should render Content component', async () => {
-    render(<Content />)
+    render(
+      <PodcastsContext.Provider
+        value={{
+          filteredPodcasts: mockPodcasts,
+          podcasts: mockPodcasts,
+          isLoading: false,
+          dispatch: () => {},
+        }}
+      >
+        <Content />
+      </PodcastsContext.Provider>
+    )
 
     const content = screen.getByTestId('content')
 
@@ -25,7 +37,18 @@ describe('Content', () => {
   })
 
   test('should render SearchSection', async () => {
-    render(<Content />)
+    render(
+      <PodcastsContext.Provider
+        value={{
+          filteredPodcasts: mockPodcasts,
+          podcasts: mockPodcasts,
+          isLoading: false,
+          dispatch: () => {},
+        }}
+      >
+        <Content />
+      </PodcastsContext.Provider>
+    )
 
     expect(screen.getByTestId('search-section')).toBeInTheDocument()
   })

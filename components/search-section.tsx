@@ -10,18 +10,25 @@ import { matchVariables } from '@/utils/stringOperators'
 import { updateFilteredPodcasts } from '@/contexts/podcast-context/podcasts.actions'
 
 const SearchSection = () => {
-  const { dispatch, podcasts } = useContext(PodcastsContext)
+  const { dispatch, podcasts, isLoading } = useContext(PodcastsContext)
   const [search, setSearch] = useState<string>('')
   const [numResults, setNumResults] = useState<number>(0)
 
   useEffect(() => {
+    searchPodcast()
+  }, [search, podcasts, isLoading])
+
+  const searchPodcast = () => {
+    if (isLoading) {
+      return
+    }
     if (!search) {
       updateFilteredPodcasts(dispatch, podcasts)
       setNumResults(0)
     } else {
       filterResults()
     }
-  }, [search, podcasts])
+  }
 
   const filterResults = () => {
     const results = podcasts.filter(
