@@ -4,7 +4,7 @@ import {
   storePodcastList,
   storeLastFetchTime,
 } from '@/utils/podcastStorageUtils'
-import { getItem, setItem, KEY_PREFIX } from '@/utils/localStorageUtils'
+import { getItem, setItem } from '@/utils/localStorageUtils'
 import { PodcastItemI } from '@/api/data/Podcast'
 import { mockPodcasts } from '../__mocks__/podcastMocks'
 
@@ -12,11 +12,10 @@ import { mockPodcasts } from '../__mocks__/podcastMocks'
 jest.mock('@/utils/localStorageUtils', () => ({
   getItem: jest.fn(),
   setItem: jest.fn(),
-  KEY_PREFIX: 'podcast-app-',
 }))
 
-const podcastListKey = `${KEY_PREFIX}podcasts`
-const lastFetchTimeKey = `${KEY_PREFIX}lastFetchTime`
+const podcastListKey = `podcast-app-podcasts`
+const lastFetchTimeKey = `podcast-app-lastFetchTime`
 
 describe('podcastStorage functions', () => {
   beforeEach(() => {
@@ -68,7 +67,7 @@ describe('podcastStorage functions', () => {
   test('storePodcastList should save the podcast list to localStorage', () => {
     storePodcastList(mockPodcasts)
 
-    expect(setItem).toHaveBeenCalledWith('podcast', mockPodcasts)
+    expect(setItem).toHaveBeenCalledWith(podcastListKey, mockPodcasts)
   })
 
   test('storeLastFetchTime should save the current timestamp to localStorage', () => {
@@ -77,6 +76,6 @@ describe('podcastStorage functions', () => {
 
     storeLastFetchTime()
 
-    expect(setItem).toHaveBeenCalledWith('lastFetchTime', now)
+    expect(setItem).toHaveBeenCalledWith(lastFetchTimeKey, now)
   })
 })

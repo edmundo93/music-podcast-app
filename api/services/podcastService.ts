@@ -6,7 +6,7 @@ import {
   storeLastFetchTime,
   storePodcastList,
 } from '@/utils/podcastStorageUtils'
-import { transFormMsToHours } from '@/utils/timeUtils'
+import { transformSecondToHours } from '@/utils/timeUtils'
 
 const REVALIDATE = process.env.REVALIDATE
 
@@ -17,10 +17,10 @@ export const getAllPodcast = async (): Promise<PodcastItemI[]> => {
     if (storedPodcasts && lastFetchTime) {
       const now = Date.now()
       const hoursSinceLastFetch = Math.floor(
-        ((now - lastFetchTime) / 1000) * 60 * 60
+        (now - lastFetchTime) / (1000 * 60 * 60)
       )
       const timeToRefetch = parseInt(REVALIDATE as string)
-      if (hoursSinceLastFetch < transFormMsToHours(timeToRefetch)) {
+      if (hoursSinceLastFetch < transformSecondToHours(timeToRefetch)) {
         return storedPodcasts
       }
     }
