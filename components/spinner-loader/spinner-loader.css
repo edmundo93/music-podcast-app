@@ -1,0 +1,35 @@
+.dot-spinner {
+  width: 60px;
+  height: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.dot-spinner .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #3498db;
+  animation: bounce 1.2s ease-in-out infinite;
+}
+
+.dot-spinner .dot:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.dot-spinner .dot:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

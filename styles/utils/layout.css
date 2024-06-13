@@ -16,3 +16,10 @@
     position: relative;
     width: 100%;
 }
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
