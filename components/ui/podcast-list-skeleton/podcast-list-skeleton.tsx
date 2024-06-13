@@ -6,8 +6,10 @@ const PodcastListSkeleton = () => {
   return (
     <div className={`${styles.container} row`}>
       {Array(50)
-        .fill(<PodcastItemSkeleton />)
-        .map((item) => item)}
+        .fill(null)
+        .map((_, index) => (
+          <PodcastItemSkeleton key={index} />
+        ))}
     </div>
   )
 }

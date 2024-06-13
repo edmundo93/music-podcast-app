@@ -1,5 +1,7 @@
 import { PodcastItemI } from '@/api/data/Podcast'
-import { KEY_PREFIX, getItem, setItem } from '@/utils/localStorageUtils'
+import { getItem, removeItem, setItem } from '@/utils/localStorageUtils'
+
+const KEY_PREFIX = 'podcast-app-'
 
 const podcastListKey = KEY_PREFIX + 'podcasts'
 const lastFetchTimeKey = KEY_PREFIX + 'lastFetchTime'
@@ -13,9 +15,14 @@ export const getStoredLastFetchTime = (): number | null => {
 }
 
 export const storePodcastList = (value: PodcastItemI[]) => {
-  setItem('podcast', value)
+  setItem(podcastListKey, value)
 }
 
 export const storeLastFetchTime = () => {
-  setItem('lastFetchTime', Date.now())
+  setItem(lastFetchTimeKey, Date.now())
+}
+
+export const removePodcastStorage = () => {
+  removeItem(podcastListKey)
+  removeItem(lastFetchTimeKey)
 }
