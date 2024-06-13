@@ -1,6 +1,6 @@
 import Content from '@/components/layout/content/content'
 
-const Home = async () => {
+const Home = () => {
   return <Content />
 }
 
