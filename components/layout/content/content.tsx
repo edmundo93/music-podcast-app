@@ -9,26 +9,30 @@ import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
 import { PodcastContextI } from '@/contexts/podcast-context/types'
 import {
   updateFilteredPodcasts,
+  updateLoading,
   updatePodcasts,
 } from '@/contexts/podcast-context/podcasts.actions'
+import PodcastListSkeleton from '@/components/ui/podcast-list-skeleton/podcast-list-skeleton'
 
 const Content = () => {
-  const { dispatch } = useContext<PodcastContextI>(PodcastsContext)
+  const { dispatch, isLoading } = useContext<PodcastContextI>(PodcastsContext)
 
   useEffect(() => {
     void getData()
   }, [])
 
   const getData = async () => {
+    updateLoading(dispatch, true)
     const allPodcasts = await getAllPodcast()
     updatePodcasts(dispatch, allPodcasts)
     updateFilteredPodcasts(dispatch, allPodcasts)
+    updateLoading(dispatch, false)
   }
 
   return (
     <div className={styles.content} data-testid="content">
       <SearchSection />
-      <PodcastList />
+      {isLoading ? <PodcastListSkeleton /> : <PodcastList />}
     </div>
   )
 }
