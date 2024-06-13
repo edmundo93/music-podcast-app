@@ -2,6 +2,12 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import '@/styles/utils/variables.css'
+import '@app-styles/utils/mixins.css'
+import NavBar from '@/components/layout/nav-bar/nav-bar'
+import styles from '@/app/page.module.css'
+import { PodcastsContextProvider } from '@/contexts/podcast-context/podcasts.context'
+import { Suspense } from 'react'
+import Loading from './loading'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,7 +23,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <div className="mainLayout">
+          <div className="flex-grow">
+            <Suspense fallback={<Loading />}>
+              <NavBar />
+              <main className={styles.main}>
+                <PodcastsContextProvider>{children}</PodcastsContextProvider>
+              </main>
+            </Suspense>
+          </div>
+        </div>
+      </body>
     </html>
   )
 }

@@ -1,0 +1,52 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+    padding: 1rem;
+    box-shadow: var(--card-box-shadow);
+    max-width: 12rem;
+}
+
+.image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    position: relative;
+    color: var(--secondary-text-color);
+    font-style: italic;
+    text-align: left;
+    width: 100%;
+    text-wrap: wrap;
+    word-wrap: break-word;
+}
+
+.title {
+    position: relative;
+    font-weight: bold;
+    text-align: left;
+    /* width: fit-content; */
+}
+
+.author {
+    position: relative;
+    display: flex;
+    padding: 0.5rem 0.25rem;
+    font-size: 14px;
+}
+
+.description {
+    position: relative;
+    display: flex;
+    font-size: 12px;
+    text-align: left;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 90%;
+}

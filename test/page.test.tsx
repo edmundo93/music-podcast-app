@@ -15,17 +15,8 @@ afterEach(() => {
 })
 
 describe('Home', () => {
-  it('should render a main', () => {
+  it('should renders Content component', () => {
     render(<Home />)
-
-    const main = screen.getByRole('main')
-
-    expect(main).toBeInTheDocument()
-  })
-
-  it('should renders NavBar and Content components', () => {
-    render(<Home />)
-    expect(screen.getByTestId('navbar')).toBeInTheDocument()
     expect(screen.getByTestId('content')).toBeInTheDocument()
   })
 })

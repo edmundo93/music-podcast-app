@@ -22,3 +22,7 @@
     background-size: 400% 400%;
     animation: gradientAnimation 2s ease infinite;
 }
+
+.flex-grow {
+  flex-grow: 1;
+}
