@@ -1,10 +1,12 @@
+import React from 'react'
+import EpisodesDetail from '@/components/episodes/episodes-detail'
 interface IProps {
   params: { id: string }
   searchParams: any
 }
 
-const PodcastList = (props: IProps) => {
-  return <h1>PODCAST LIST {`${props.params.id}`}</h1>
+const PodcastEpisodes = (props: IProps) => {
+  return <EpisodesDetail podcastId={props.params.id} />
 }
 
-export default PodcastList
+export default PodcastEpisodes

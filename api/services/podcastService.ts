@@ -1,5 +1,5 @@
 import { PodcastItemI } from '@/api/data/Podcast'
-import { getPodcastList } from '@/api/clients/podcastClient'
+import { getEpisodes, getPodcastList } from '@/api/clients/podcastClient'
 import {
   getStoredLastFetchTime,
   getStoredPodcastList,
@@ -7,6 +7,7 @@ import {
   storePodcastList,
 } from '@/utils/podcastStorageUtils'
 import { transformSecondToHours } from '@/utils/timeUtils'
+import { EpisodesI } from '../data/Episode'
 
 const REVALIDATE = process.env.REVALIDATE
 
@@ -36,5 +37,17 @@ export const getAllPodcast = async (): Promise<PodcastItemI[]> => {
     storeLastFetchTime()
     console.error(error.message)
     return []
+  }
+}
+
+export const getPodcastEpisodes = async (
+  episodeId: string
+): Promise<EpisodesI | null> => {
+  try {
+    const response = await getEpisodes(episodeId)
+    return response
+  } catch (error: any) {
+    console.error(error)
+    return null
   }
 }

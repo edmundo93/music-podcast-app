@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 import './podcast-detail.css'
 import '@app-styles/utils/layout.css'
+import '@app-styles/components/card.css'
 import { useGetPodcast } from '@/hooks/useGetPodcast'
 
 interface IProps {
@@ -28,7 +29,7 @@ const PodcastDetail = (props: IProps) => {
   }
 
   return (
-    <div className="card">
+    <div className="container card">
       <div className="image">
         {podcast && (
           <Image

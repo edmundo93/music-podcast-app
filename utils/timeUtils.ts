@@ -24,3 +24,18 @@ export const transformSecondToHours = (timeS: number) => {
 
   return Math.floor(timeS / (60 * 60))
 }
+
+const pad = (num: number) => num.toString().padStart(2, '0')
+
+export const formatMillisecons = (time: number) => {
+  const ss = Math.floor(time / 1000)
+  const mm = Math.floor(ss / 60)
+  const hh = Math.floor(mm / 60)
+
+  const sec = ss % 60
+  const min = mm % 60
+
+  return hh > 0
+    ? `${pad(hh)}:${pad(min)}:${pad(sec)}`
+    : `${pad(min)}:${pad(sec)}`
+}

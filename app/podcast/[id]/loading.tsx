@@ -1,4 +1,5 @@
 import SpinnerLoader from '@/components/spinner-loader/spinner-loader'
+import '@/app/globals.css'
 
 const Loading = () => {
   return (
