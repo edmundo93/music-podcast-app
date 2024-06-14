@@ -1,11 +1,11 @@
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: var(--main-gap);
   padding: var(--main-padding);
-  min-height: var(--main-minheight);
   min-width: var(--main-minwidth);
 }
 /* Enable hover only on non-touch devices */

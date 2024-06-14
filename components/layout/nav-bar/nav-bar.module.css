@@ -1,5 +1,6 @@
 .navbar {
-    position: relative;
+    position: sticky;
+    top: 0;
     width: 100%;
     color: #1E90FF;
     box-shadow: var(--card-box-shadow);
@@ -7,4 +8,6 @@
     height: fit-content;
     overflow-wrap: break-word;
     font-weight: bold;
+    z-index: 1000;
+    background-color: var(--white-color);
 }

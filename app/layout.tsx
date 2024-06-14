@@ -25,14 +25,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="mainLayout">
-          <div className="flex-grow">
-            <Suspense fallback={<Loading />}>
-              <NavBar />
-              <main className={styles.main}>
-                <PodcastsContextProvider>{children}</PodcastsContextProvider>
-              </main>
-            </Suspense>
-          </div>
+          <Suspense fallback={<Loading />}>
+            <NavBar />
+            <main className={styles.main}>
+              <PodcastsContextProvider>{children}</PodcastsContextProvider>
+            </main>
+          </Suspense>
         </div>
       </body>
     </html>

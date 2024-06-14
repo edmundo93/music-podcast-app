@@ -1,4 +1,4 @@
-import PodcastDetail from './podcast-detail/podcast-detail'
+import PodcastDetail from '@app-components/podcast-detail/podcast-detail'
 import './podcast-layout.css'
 
 interface IProps {
@@ -8,11 +8,11 @@ interface IProps {
 
 const PodcastLayout = (props: IProps) => {
   return (
-    <div className="layout">
-      <aside>
+    <div className="podcast-layout">
+      <aside className="podcast-sidebar">
         <PodcastDetail podcastId={props.params?.id} />
       </aside>
-      <div>{props.children}</div>
+      <main className="podcast-content">{props.children}</main>
     </div>
   )
 }
