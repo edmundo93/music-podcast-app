@@ -28,7 +28,7 @@ export const transformSecondToHours = (timeS: number) => {
 const pad = (num: number) => num.toString().padStart(2, '0')
 
 export const formatMillisecons = (time: number) => {
-  const ss = Math.floor(time / 100)
+  const ss = Math.floor(time / 1000)
   const mm = Math.floor(ss / 60)
   const hh = Math.floor(mm / 60)
 

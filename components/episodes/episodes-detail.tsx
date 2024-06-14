@@ -26,24 +26,27 @@ const EpisodesDetail = (props: IProps) => {
     if (episodesInfo) {
       setResults(episodesInfo.resultCount)
       setEpisodes(episodesInfo.results)
+    } else {
+      setResults(0)
+      setEpisodes([])
     }
     setLoading(false)
   }
 
   if (loading) {
     return (
-      <div className="loader">
+      <div className="loader" data-testid="loader">
         <SpinnerLoader />
       </div>
     )
   }
 
   return (
-    <main className="main">
+    <main className="main" data-testid="episodes-detail">
       <header className="header card">{`Episodes: ${results}`}</header>
       <section className="section card">
-        {!episodes ? (
-          <h1>No episodes found</h1>
+        {!loading && !episodes.length ? (
+          <h1>{'No episodes found'}</h1>
         ) : (
           <ListEpisodes episodes={episodes} />
         )}
