@@ -4,12 +4,12 @@ import {
   storePodcastList,
   storeLastFetchTime,
 } from '@/utils/podcastStorageUtils'
-import { getItem, setItem } from '@/utils/localStorageUtils'
+import { getItem, setItem } from '@/utils/sessionStorageUtils'
 import { PodcastItemI } from '@/api/data/Podcast'
 import { mockPodcasts } from '../__mocks__/podcastMocks'
 
-// Mock de funciones de localStorageUtils
-jest.mock('@/utils/localStorageUtils', () => ({
+// Mock de funciones de sessionStorageUtils
+jest.mock('@/utils/sessionStorageUtils', () => ({
   getItem: jest.fn(),
   setItem: jest.fn(),
 }))

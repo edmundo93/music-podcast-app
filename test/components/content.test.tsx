@@ -1,55 +1,42 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { getAllPodcast } from '@/api/services/podcastService'
+import * as useGetPodcastHook from '@/hooks/useGetPodcast'
 import Content from '@/components/layout/content/content'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { mockPodcasts } from '../__mocks__/podcastMocks'
-import { beforeEach } from 'node:test'
-import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
+
+jest.mock('@/hooks/useGetPodcast')
 
 describe('Content', () => {
-  beforeEach(() => {
-    jest.doMock('@/api/services/podcastService', () => ({
-      getAllPodcast: jest.fn().mockResolvedValue(mockPodcasts),
-    }))
-  })
-
   afterEach(() => {
     jest.resetModules()
   })
 
-  test('should render Content component', async () => {
-    render(
-      <PodcastsContext.Provider
-        value={{
-          filteredPodcasts: mockPodcasts,
-          podcasts: mockPodcasts,
-          isLoading: false,
-          dispatch: () => {},
-        }}
-      >
-        <Content />
-      </PodcastsContext.Provider>
-    )
+  it('show the loading skeletron when podcast list is loading', async () => {
+    jest.spyOn(useGetPodcastHook, 'useGetPodcast').mockReturnValue({
+      isLoading: true,
+      podcasts: [],
+    })
 
-    const content = screen.getByTestId('content')
+    render(<Content />)
 
-    expect(content).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getByTestId('content')).toBeInTheDocument()
+    })
+
+    expect(screen.getByTestId('podcast-list-skeleton')).toBeInTheDocument()
   })
 
-  test('should render SearchSection', async () => {
-    render(
-      <PodcastsContext.Provider
-        value={{
-          filteredPodcasts: mockPodcasts,
-          podcasts: mockPodcasts,
-          isLoading: false,
-          dispatch: () => {},
-        }}
-      >
-        <Content />
-      </PodcastsContext.Provider>
-    )
+  it('show the list of podcast when the loading is over', async () => {
+    jest.spyOn(useGetPodcastHook, 'useGetPodcast').mockReturnValue({
+      isLoading: false,
+      podcasts: mockPodcasts,
+    })
 
-    expect(screen.getByTestId('search-section')).toBeInTheDocument()
+    render(<Content />)
+
+    await waitFor(() => {
+      expect(screen.getByTestId('content')).toBeInTheDocument()
+      expect(screen.getByTestId('podcast-list')).toBeInTheDocument()
+    })
   })
 })

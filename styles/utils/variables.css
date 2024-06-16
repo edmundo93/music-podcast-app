@@ -18,9 +18,11 @@
     --grey-color: #A9A9A9;
     --light-grey-color: #DCDCDC;
     --white-color: #fff;
+    --alert-color: #FAE6E6;
+    --red-color: #CC0000;
 
     --row-gap: 0.5rem;
-    --column-gap: 1rem;
+    --column-gap: 1.5rem;
 
     --border: 2px solid var(--grey-color);
 

@@ -1,5 +1,5 @@
 import { PodcastItemI } from '@/api/data/Podcast'
-import { getItem, removeItem, setItem } from '@/utils/localStorageUtils'
+import { getItem, removeItem, setItem } from '@/utils/sessionStorageUtils'
 
 const KEY_PREFIX = 'podcast-app-'
 
