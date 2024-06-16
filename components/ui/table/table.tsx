@@ -8,12 +8,13 @@ interface IProps {
 }
 
 const Table = (props: IProps) => {
-  const renderHeads = () =>
-    props.headValues?.map((value, index) => (
-      <tr key={`${index}${value}`}>
-        <th>{value}</th>
-      </tr>
-    ))
+  const renderHeads = () => (
+    <tr>
+      {props.headValues?.map((value, index) => (
+        <th key={`${index}${value}`}>{value}</th>
+      ))}
+    </tr>
+  )
 
   const renderValues = () => {
     return props.bodyValues.map((line, i) => (
