@@ -37,6 +37,7 @@ export interface EpisodeI {
   artworkUrl30?: string
   artworkUrl100?: string
   collectionPrice?: number
+  trackCount?: number
 }
 
 export interface EpisodesI {

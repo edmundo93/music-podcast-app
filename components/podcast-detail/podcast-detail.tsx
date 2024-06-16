@@ -8,6 +8,7 @@ import './podcast-detail.css'
 import '@app-styles/utils/layout.css'
 import '@app-styles/components/card.css'
 import { useGetPodcast } from '@/hooks/useGetPodcast'
+import Link from 'next/link'
 
 interface IProps {
   podcastId: string
@@ -30,7 +31,7 @@ const PodcastDetail = (props: IProps) => {
 
   return (
     <div className="container card">
-      <div className="image">
+      <Link href={`/podcast/${props.podcastId}`} className="image">
         {podcast && (
           <Image
             src={podcast['im:image'][2].label}
@@ -39,11 +40,11 @@ const PodcastDetail = (props: IProps) => {
             height={120}
           />
         )}
-      </div>
-      <div className="author column">
+      </Link>
+      <Link href={`/podcast/${props.podcastId}`} className="author column">
         <div className="title">{podcast?.title.label}</div>
         <div className="text">{`by ${podcast?.['im:artist'].label}`}</div>
-      </div>
+      </Link>
       <div className="description column">
         <div className="title">Description:</div>
         <div className="text">{podcast?.summary.label}</div>

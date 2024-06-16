@@ -10,7 +10,9 @@ interface IProps {
 const Table = (props: IProps) => {
   const renderHeads = () =>
     props.headValues?.map((value, index) => (
-      <th key={`${index}${value}`}>{value}</th>
+      <tr key={`${index}${value}`}>
+        <th>{value}</th>
+      </tr>
     ))
 
   const renderValues = () => {

@@ -3,7 +3,7 @@ import { EpisodeI } from '@/api/data/Episode'
 import Table from '@/components/ui/table/table'
 import Link from 'next/link'
 import { formatDate } from '@/utils/dateUtils'
-import { formatMillisecons } from '@/utils/timeUtils'
+import { formatMillisecons, formatSeconds } from '@/utils/timeUtils'
 
 import styles from './list-episodes..module.css'
 
@@ -24,10 +24,17 @@ const ListEpisodes = (props: IProps) => {
         {episode.trackName}
       </Link>,
       formatDate(episode.releaseDate),
-      formatMillisecons(episode.trackTimeMillis),
+      getDuration(episode),
     ])
     setTableValues(values)
   }, [props.episodes])
+
+  const getDuration = (episode: EpisodeI): string => {
+    if (episode.trackTimeMillis) {
+      return formatMillisecons(episode.trackTimeMillis)
+    }
+    return formatSeconds(episode.trackCount ?? 0)
+  }
 
   return (
     <Table

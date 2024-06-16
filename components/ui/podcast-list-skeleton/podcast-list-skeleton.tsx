@@ -4,7 +4,10 @@ import PodcastItemSkeleton from './podcast-item-skeleton'
 
 const PodcastListSkeleton = () => {
   return (
-    <div className={`${styles.container} row`}>
+    <div
+      className={`${styles.container} row`}
+      data-testid="podcast-list-skeleton"
+    >
       {Array(50)
         .fill(null)
         .map((_, index) => (

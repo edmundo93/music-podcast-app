@@ -8,6 +8,12 @@ import {
 } from '@/utils/podcastStorageUtils'
 import { transformSecondToHours } from '@/utils/timeUtils'
 import { EpisodesI } from '../data/Episode'
+import {
+  getStoredEpisodeFetchTime,
+  getStoredEpisodes,
+  storeEpisodeFetchTime,
+  storeEpisodesInfo,
+} from '@/utils/episodesStorageUtils'
 
 const REVALIDATE = process.env.REVALIDATE
 
@@ -41,13 +47,29 @@ export const getAllPodcast = async (): Promise<PodcastItemI[]> => {
 }
 
 export const getPodcastEpisodes = async (
-  episodeId: string
+  podcastId: string
 ): Promise<EpisodesI | null> => {
   try {
-    const response = await getEpisodes(episodeId)
+    const episodesInfo = getStoredEpisodes(podcastId)
+    const lastFetchTime = getStoredEpisodeFetchTime(podcastId)
+    if (episodesInfo && lastFetchTime) {
+      const now = Date.now()
+      const hoursSinceLastFetch = Math.floor(
+        (now - lastFetchTime) / (1000 * 60 * 60)
+      )
+      const timeToRefetch = parseInt(REVALIDATE as string)
+      if (hoursSinceLastFetch < transformSecondToHours(timeToRefetch)) {
+        return episodesInfo
+      }
+    }
+    const response = await getEpisodes(podcastId)
+    storeEpisodesInfo(podcastId, response)
+    storeEpisodeFetchTime(podcastId)
     return response
   } catch (error: any) {
     console.error(error)
+    storeEpisodesInfo(podcastId, null)
+    storeEpisodeFetchTime(podcastId)
     return null
   }
 }

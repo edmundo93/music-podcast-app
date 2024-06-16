@@ -1,5 +1,5 @@
 import PodcastCard from '@/components/podcast-card/podcast-card'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import { mockPodcasts } from '@/test/__mocks__/podcastMocks'
 import styles from '@app-components/podcast-card/podcast-card.module.css'
 import { PodcastsContext } from '@/contexts/podcast-context/podcasts.context'
@@ -20,15 +20,18 @@ describe('PodcastCard', () => {
     )
 
     const image = screen.getByAltText(mockPodcasts[0]['im:name'].label)
-    expect(image).toBeInTheDocument()
-    expect(image).toHaveAttribute(
-      'height',
-      mockPodcasts[0]['im:image'][1].attributes.height
-    )
-    expect(image).toHaveAttribute(
-      'width',
-      mockPodcasts[0]['im:image'][1].attributes.height
-    )
+
+    await waitFor(() => {
+      expect(image).toBeInTheDocument()
+      expect(image).toHaveAttribute(
+        'height',
+        mockPodcasts[0]['im:image'][1].attributes.height
+      )
+      expect(image).toHaveAttribute(
+        'width',
+        mockPodcasts[0]['im:image'][1].attributes.height
+      )
+    })
 
     const title = screen.getByText(mockPodcasts[0].title.label)
     expect(title).toBeInTheDocument()

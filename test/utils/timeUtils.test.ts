@@ -1,5 +1,6 @@
 import {
   formatMillisecons,
+  formatSeconds,
   transFormMsToHours,
   transformSecondToHours,
 } from '@/utils/timeUtils'
@@ -62,7 +63,7 @@ describe('transformSecondToHours function', () => {
 
 describe('formatMillisecons function', () => {
   it('should format milliseconds into HH:mm:ss format', () => {
-    expect(formatMillisecons(0)).toEqual('00:00') // 0 milliseconds should be formatted as 00:00
+    expect(formatMillisecons(0)).toEqual('') // 0 milliseconds should not be formated and return ''
     expect(formatMillisecons(1000)).toEqual('00:01') // 1000 milliseconds = 1 second = 00:01
     expect(formatMillisecons(61000)).toEqual('01:01') // 61000 milliseconds = 1 minute 1 second = 01:01
     expect(formatMillisecons(3661000)).toEqual('01:01:01') // 3661000 milliseconds = 1 hour 1 minute 1 second = 01:01:01
@@ -74,5 +75,15 @@ describe('formatMillisecons function', () => {
     expect(formatMillisecons(60000)).toEqual('01:00') // 60000 milliseconds = 1 minute = 01:00
     expect(formatMillisecons(3601000)).toEqual('01:00:01') // 3601000 milliseconds = 1 hour 1 second = 01:00:01
     expect(formatMillisecons(3610000)).toEqual('01:00:10') // 3610000 milliseconds = 1 hour 10 seconds = 01:00:10
+  })
+})
+
+describe('formatSeconds function', () => {
+  it('should format seconds into HH:mm:ss format', () => {
+    expect(formatSeconds(0)).toEqual('')
+    expect(formatSeconds(1)).toEqual('00:01') // 1 second = 00:01
+    expect(formatSeconds(61)).toEqual('01:01') // 61 seconds = 1 minute 1 second = 01:01
+    expect(formatSeconds(3661)).toEqual('01:01:01') // 3661 seconds = 1 hour 1 minute 1 second = 01:01:01
+    expect(formatSeconds(3600)).toEqual('01:00:00') // 3600 seconds = 1 hour = 01:00:00
   })
 })
