@@ -21,7 +21,7 @@ export const getAllPodcast = async (): Promise<PodcastItemI[]> => {
   try {
     const storedPodcasts = getStoredPodcastList()
     const lastFetchTime = getStoredLastFetchTime()
-    if (storedPodcasts && lastFetchTime) {
+    if (storedPodcasts?.length && lastFetchTime) {
       const now = Date.now()
       const hoursSinceLastFetch = Math.floor(
         (now - lastFetchTime) / (1000 * 60 * 60)
