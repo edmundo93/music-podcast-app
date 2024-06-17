@@ -23,8 +23,9 @@ const request = async (url: string) => {
     })
 
     if (response.status === 200) {
-      const respJSON = await response.json()
-      return JSON.parse(respJSON.contents)
+      const jsonResp = await response.json()
+      const cleanedJson = jsonResp.contents.replace(/\\n/g, '')
+      return JSON.parse(cleanedJson)
     }
 
     throw new Error(`${response.status} ${response.statusText}`)

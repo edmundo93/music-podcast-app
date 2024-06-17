@@ -8,6 +8,7 @@ import { formatMillisecons, formatSeconds } from '@/utils/timeUtils'
 import styles from './list-episodes..module.css'
 
 interface IProps {
+  podcastId: string
   episodes: EpisodeI[]
 }
 
@@ -17,7 +18,7 @@ const ListEpisodes = (props: IProps) => {
   useEffect(() => {
     const values = props.episodes.map((episode) => [
       <Link
-        href={`/episode/${episode.trackId}`}
+        href={`${props.podcastId}/episode/${episode.trackId}`}
         key={episode.trackId}
         className={styles.link}
       >

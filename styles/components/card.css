@@ -5,4 +5,5 @@
     align-items: center;
     justify-content: flex-start;
     box-shadow: var(--card-box-shadow);
+    background-color: var(--white-color);
 }
